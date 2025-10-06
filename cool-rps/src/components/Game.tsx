@@ -1,3 +1,5 @@
+import styles from "./Game.module.css";
+
 export default function Game({
   moveList,
   playerMove,
@@ -35,7 +37,7 @@ export default function Game({
     getResult(move, compMove);
   }
   return (
-    <div>
+    <div className={styles.container}>
       <div>
         {moveList.map((move) => (
           <button key={move} onClick={() => playRound(move)}>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Game from "./components/Game";
 import MovePicker from "./components/MovePicker";
+import CircleDiagram from "./components/CircleDiagram";
 
 function App() {
   const [moveList, setMoveList] = useState<string[]>([
@@ -29,6 +30,7 @@ function App() {
         setScore={setScore}
       />
       <MovePicker setMoveList={setMoveList} />
+      <CircleDiagram moveList={moveList} />
       <img src="./diagram.webp" />
     </div>
   );

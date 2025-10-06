@@ -1,0 +1,16 @@
+.bigCircle {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border: dashed grey 3px;
+  border-radius: 50%;
+  margin-left: 300px;
+}
+
+.littleCircle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
