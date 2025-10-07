@@ -1,6 +1,19 @@
 .notificationContainer {
   position: absolute;
   padding: 10px 70px;
+  animation: fadeOut 1s forwards;
+  opacity: 1;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
 
 .notification {

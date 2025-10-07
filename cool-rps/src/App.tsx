@@ -47,7 +47,7 @@ function App() {
       <h1>Rock Paper Scissors Spock Lizard</h1>
       <div className={styles.score}>
         <p>Score: {score}</p>
-        <ScoreNotification prevScore={prevScore} />
+        <ScoreNotification prevScore={prevScore} score={score} />
       </div>
       <Game
         playerMove={playerMove}
