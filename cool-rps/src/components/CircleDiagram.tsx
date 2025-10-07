@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getResult } from "../utils/getResult";
 import styles from "./CircleDiagram.module.scss";
 
-export default function CircleDiagram({ moveList }) {
+export default function CircleDiagram({ moveList, playRound }) {
   const [hovered, setHovered] = useState<number | null>();
   const radius = 200;
   const circle = 2 * Math.PI;
@@ -59,6 +59,13 @@ export default function CircleDiagram({ moveList }) {
           //shorten line at both ends so that the head shows
           const posFrom = positions[from];
           const posTo = positions[to];
+          let lineClass = styles.hiddenLine;
+          if (from === hovered) {
+            lineClass = styles.animatedLine;
+          } else if (to === hovered) {
+            lineClass = styles.animatedBadLine;
+          }
+
           return (
             <line
               key={i}
@@ -68,9 +75,7 @@ export default function CircleDiagram({ moveList }) {
               y2={posTo.y}
               strokeWidth="2"
               // markerEnd="url(#arrowhead)"
-              className={
-                hovered === from ? styles.animatedLine : styles.hiddenLine
-              }
+              className={lineClass}
             />
           );
         })}
@@ -84,6 +89,7 @@ export default function CircleDiagram({ moveList }) {
           style={{ left: `${coords.x}px`, top: `${coords.y}px` }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
+          onClick={() => playRound(moveList[i])}
         >
           {moveList[i]}
         </div>
