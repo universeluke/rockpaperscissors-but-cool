@@ -6,8 +6,8 @@
 
 .littleCircle {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   background: red;
   border-radius: 50%;
   display: flex;

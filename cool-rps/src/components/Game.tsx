@@ -13,8 +13,6 @@ export default function Game({
     return moveList[Math.floor(Math.random() * moveList.length)];
   }
 
-  // you LOSE to moves 1, 3, 5... ahead, WIN against 2, 4, 6... ahead
-
   function playRound(move: string) {
     const compMove = generateComputerMove();
     setPlayerMove(move);
