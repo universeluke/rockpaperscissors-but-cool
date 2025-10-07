@@ -3,11 +3,13 @@ import styles from "./Game.module.scss";
 export default function Game({ playerMove, computerMove }) {
   return (
     <div className={styles.container}>
-      {playerMove && computerMove && (
+      {playerMove && computerMove ? (
         <p>
           u picked {playerMove}, i picked {""}
           {computerMove}
         </p>
+      ) : (
+        <p>make your move...</p>
       )}
     </div>
   );

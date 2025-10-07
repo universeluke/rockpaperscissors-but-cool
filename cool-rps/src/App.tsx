@@ -47,7 +47,7 @@ function App() {
       />
       <MovePicker setMoveList={setMoveList} />
       <CircleDiagram moveList={moveList} playRound={playRound} />
-      <img src="./diagram.webp" />
+      {/* <img src="./diagram.webp" /> */}
     </div>
   );
 }
