@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "./App.css";
+import styles from "./App.module.scss";
 import Game from "./components/Game";
 import MovePicker from "./components/MovePicker";
 import CircleDiagram from "./components/CircleDiagram";
 import { getResult } from "./utils/getResult";
+import ScoreNotification from "./components/ScoreNotification";
 
 function App() {
   const [moveList, setMoveList] = useState<string[]>([
@@ -19,6 +20,7 @@ function App() {
   const [score, setScore] = useState<number>(0);
   const [playerMove, setPlayerMove] = useState<string>("");
   const [computerMove, setComputerMove] = useState<string>("");
+  const [prevScore, setPrevScore] = useState<number | null>(null);
 
   function generateComputerMove() {
     return moveList[Math.floor(Math.random() * moveList.length)];
@@ -29,21 +31,28 @@ function App() {
     setPlayerMove(move);
     setComputerMove(compMove);
     const result = getResult(move, compMove, moveList);
-    if (result === 1) setScore((prev) => prev + 1);
-    if (result === -1) setScore((prev) => prev - 1);
+    if (result === 1) {
+      setScore((prev) => prev + 1);
+      setPrevScore(1);
+    }
+    if (result === -1) {
+      setScore((prev) => prev - 1);
+      setPrevScore(-1);
+    }
+    if (result === 0) setPrevScore(0);
   }
 
   return (
     <div className="App">
       <h1>Rock Paper Scissors Spock Lizard</h1>
-      <p>Score: {score}</p>
+      <div className={styles.score}>
+        <p>Score: {score}</p>
+        <ScoreNotification prevScore={prevScore} />
+      </div>
       <Game
-        moveList={moveList}
         playerMove={playerMove}
-        setPlayerMove={setPlayerMove}
         computerMove={computerMove}
-        setComputerMove={setComputerMove}
-        setScore={setScore}
+        prevScore={prevScore}
       />
       <MovePicker setMoveList={setMoveList} />
       <CircleDiagram moveList={moveList} playRound={playRound} />
