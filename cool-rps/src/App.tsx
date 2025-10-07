@@ -12,6 +12,8 @@ function App() {
     "scissors",
     "spock",
     "lizard",
+    "gun",
+    "laser",
   ]);
   const [score, setScore] = useState<number>(0);
   const [playerMove, setPlayerMove] = useState<string>("");

@@ -1,5 +1,5 @@
 import { getResult } from "../utils/getResult";
-import styles from "./Game.module.css";
+import styles from "./Game.module.scss";
 
 export default function Game({
   moveList,

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { getResult } from "../utils/getResult";
-import styles from "./CircleDiagram.module.css";
+import styles from "./CircleDiagram.module.scss";
 
 export default function CircleDiagram({ moveList }) {
-  const radius = 150;
+  const [hovered, setHovered] = useState<number | null>();
+  const radius = 200;
   const circle = 2 * Math.PI;
 
   const positions = moveList.map((move: string, i: number) => {
@@ -39,7 +41,7 @@ export default function CircleDiagram({ moveList }) {
       style={{ width: radius * 2, height: radius * 2 }}
     >
       <svg className={styles.lines} width={radius * 2} height={radius * 2}>
-        <defs>
+        {/* <defs>
           <marker
             id="arrowhead"
             orient="auto"
@@ -51,7 +53,7 @@ export default function CircleDiagram({ moveList }) {
           >
             <polygon points="0 2.5, 5 5, 0, 7.5" fill="green" />
           </marker>
-        </defs>
+        </defs> */}
         {winningMoves.map(({ from, to }, i) => {
           //TODO find distance between 2 points
           //shorten line at both ends so that the head shows
@@ -64,9 +66,11 @@ export default function CircleDiagram({ moveList }) {
               y1={posFrom.y}
               x2={posTo.x}
               y2={posTo.y}
-              stroke="green"
               strokeWidth="2"
-              markerEnd="url(#arrowhead)"
+              // markerEnd="url(#arrowhead)"
+              className={
+                hovered === from ? styles.animatedLine : styles.hiddenLine
+              }
             />
           );
         })}
@@ -74,8 +78,12 @@ export default function CircleDiagram({ moveList }) {
       {positions.map((coords, i: number) => (
         <div
           key={i}
-          className={styles.littleCircle}
+          className={`${styles.littleCircle} ${
+            hovered === i ? styles.activeNode : ""
+          }`}
           style={{ left: `${coords.x}px`, top: `${coords.y}px` }}
+          onMouseEnter={() => setHovered(i)}
+          onMouseLeave={() => setHovered(null)}
         >
           {moveList[i]}
         </div>

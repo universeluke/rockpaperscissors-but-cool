@@ -1,0 +1,51 @@
+.bigCircle {
+  position: relative;
+  border-radius: 50%;
+  margin-left: 100px;
+}
+
+.littleCircle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgb(181, 181, 181);
+  border-radius: 50%;
+  border: solid rgb(0, 0, 0) 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  // &:hover {
+  //   background: deepskyblue;
+  // }
+}
+
+.activeNode {
+  transform: translate(-50%, -50%) scale(1.2);
+  background: rgb(128, 215, 144);
+  transition: 0.5s ease-in-out;
+}
+
+.lines {
+  position: absolute;
+  stroke: rgb(85, 196, 106);
+}
+
+.hiddenLine {
+  opacity: 0.1;
+}
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animatedLine {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawLine 2s ease forwards;
+}
