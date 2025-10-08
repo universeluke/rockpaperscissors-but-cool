@@ -20,7 +20,7 @@ export default function CircleDiagram({ moveList, playRound }) {
     return { x, y };
   });
 
-  console.log(positions);
+  // console.log(positions);
 
   // ONLY get winning moves, just draw winning arrows
   // winningMoves is an array of objects, each object describes a winning move
@@ -34,7 +34,7 @@ export default function CircleDiagram({ moveList, playRound }) {
       }
     }
   }
-  console.log(winningMoves);
+  // console.log(winningMoves);
   return (
     <div
       className={styles.bigCircle}

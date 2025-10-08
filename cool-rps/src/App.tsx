@@ -41,6 +41,8 @@ function App() {
     if (result === 0) setPrevScore(0);
   }
 
+  console.log(moveList);
+
   return (
     <div className="App">
       <h1>
