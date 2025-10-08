@@ -4,3 +4,17 @@
   align-items: center;
   height: 30px;
 }
+
+.addMoves {
+  background: rgb(120, 175, 109);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  margin-left: 8px;
+  cursor: pointer;
+  &:hover {
+    background: rgb(101, 156, 90);
+    transform: scale(98%);
+  }
+}
