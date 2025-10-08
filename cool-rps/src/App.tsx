@@ -45,10 +45,25 @@ function App() {
 
   return (
     <div className="App">
-      <h1>
-        Welcome to the coolest game of {moveList.map((move) => `${move} `)}
-        you've ever seen
-      </h1>
+      <svg
+        className={styles.title}
+        viewBox="0 0 500 500"
+        width="600"
+        height="600"
+      >
+        <path
+          id="curve"
+          d="M50,480a220,220 0 1,1 400,0"
+          fill="none"
+          stroke="none"
+        />
+        <text width="500">
+          <textPath xlinkHref="#curve">
+            Welcome to the coolest game of {moveList.map((move) => `${move} `)}
+            you've ever seen
+          </textPath>
+        </text>
+      </svg>
       <div className={styles.score}>
         <p>Score: {score}</p>
         <ScoreNotification prevScore={prevScore} score={score} />
@@ -59,7 +74,7 @@ function App() {
         prevScore={prevScore}
       />
       <button className={styles.addMoves} onClick={() => setShowModal(true)}>
-        add moves
+        + moves
       </button>
       {showModal && (
         <MovePicker

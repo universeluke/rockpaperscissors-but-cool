@@ -3,9 +3,12 @@
   flex-direction: row;
   align-items: center;
   height: 30px;
+  padding-top: 70px;
 }
 
 .addMoves {
+  position: fixed;
+  z-index: 2;
   background: rgb(120, 175, 109);
   color: rgb(255, 255, 255);
   border: none;
@@ -17,4 +20,12 @@
     background: rgb(101, 156, 90);
     transform: scale(98%);
   }
+  top: 440px;
+  left: 270px;
+}
+
+.title {
+  position: absolute;
+  font-size: 14px;
+  pointer-events: none;
 }
