@@ -1,44 +1,30 @@
 .container {
-  display: none;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  z-index: 3;
-  animation: fadeInOverlay 5s;
+  padding-bottom: 100px;
 }
 
 .sentence {
-  top: 50%;
-  left: 20%;
-  position: absolute;
   display: flex;
   flex-direction: row;
   gap: 5px;
 }
 .loss {
   color: red;
-  animation: fadeInThird 4s, shake 0.1s infinite;
+  animation: fadeInThird 3s, shake 0.1s infinite;
 }
 .win {
   padding-top: 12px;
   font-size: 10px;
-  animation: fadeInThird 4s;
+  animation: fadeInThird 3s;
 }
 .draw {
-  animation: fadeInThird 4s;
+  animation: fadeInThird 3s;
 }
 .first {
-  animation: fadeInFirst 4s;
-  color: white;
+  animation: fadeInFirst 3s;
 }
 
 .second {
-  animation: fadeInSecond 4s;
-  color: white;
+  animation: fadeInSecond 3s;
 }
 
 @keyframes shake {
@@ -80,22 +66,5 @@
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes fadeInOverlay {
-  0% {
-    opacity: 0;
-    display: block;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    display: none;
   }
 }

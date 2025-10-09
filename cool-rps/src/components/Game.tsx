@@ -10,7 +10,7 @@ export default function Game({ playerMove, computerMove, prevScore }) {
       setComment({ comment: "whatever i don't even care", style: "win" });
     }
     if (prevScore === -1) {
-      setComment({ comment: "GET CRUSHED!!!!!!!!!", style: "loss" });
+      setComment({ comment: "GET CRUSHED!!!!!!", style: "loss" });
     }
     if (prevScore === 0) {
       setComment({ comment: "don't waste my time, fool", style: "draw" });
@@ -19,14 +19,14 @@ export default function Game({ playerMove, computerMove, prevScore }) {
   }, [prevScore, playerMove, computerMove]);
 
   return (
-    <div>
+    <div className={styles.container}>
       {playerMove && computerMove ? (
-        <div className={styles.container}>
-          <div key={animation} className={styles.sentence}>
-            <p className={styles.first}>you picked {playerMove}...</p>
-            <p className={styles.second}>i picked {computerMove}...</p>
-            <p className={styles[comment.style]}>{comment.comment}</p>
-          </div>
+        <div key={animation} className={styles.sentence}>
+          <p className={styles.first}>you picked {playerMove}...</p>
+          <p className={styles.second}>i picked {computerMove}...</p>
+          <p className={`${styles[comment.style]} ${styles.comment}`}>
+            {comment.comment}
+          </p>
         </div>
       ) : (
         <p>make your move...</p>
