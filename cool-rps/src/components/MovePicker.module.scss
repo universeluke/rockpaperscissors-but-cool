@@ -37,7 +37,7 @@
       border-color: rgb(120, 175, 109);
     }
   }
-  button {
+  .modalButton {
     background: rgb(120, 175, 109);
     color: white;
     border: none;
@@ -47,6 +47,20 @@
     cursor: pointer;
     &:hover {
       background: rgb(84, 150, 84);
+    }
+  }
+  .closeButton {
+    position: fixed;
+    bottom: 100px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(220, 56, 56);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(173, 46, 46);
     }
   }
 }

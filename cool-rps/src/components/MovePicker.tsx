@@ -26,11 +26,20 @@ export default function MovePicker({ moveList, setMoveList, setShowModal }) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalBox}>
+        <button
+          className={styles.closeButton}
+          onClick={() => setShowModal(false)}
+        >
+          X
+        </button>
+
         {step === 1 && (
           <div className={styles.field}>
             <label>first addition:</label>
             <input value={first} onChange={(e) => setFirst(e.target.value)} />
-            <button onClick={addFirst}>ok</button>
+            <button className={styles.modalButton} onClick={addFirst}>
+              ok
+            </button>
           </div>
         )}
         {step === 2 && (
@@ -53,7 +62,9 @@ export default function MovePicker({ moveList, setMoveList, setShowModal }) {
                 ))}
               </select>
             </div>
-            <button onClick={addSecond}>ok</button>
+            <button className={styles.modalButton} onClick={addSecond}>
+              ok
+            </button>
           </div>
         )}
       </div>

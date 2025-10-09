@@ -1,17 +1,31 @@
+import { useEffect, useState } from "react";
 import styles from "./Game.module.scss";
 
 export default function Game({ playerMove, computerMove, prevScore }) {
-  let comment = "";
-  if (prevScore === 1) comment = "you got lucky...";
-  if (prevScore === -1) comment = "GET CRUSHED";
-  if (prevScore === 0) comment = "don't waste my time, fool";
+  const [comment, setComment] = useState({ comment: "", style: "" });
+
+  useEffect(() => {
+    if (prevScore === 1) {
+      setComment({ comment: "whatever i don't even care", style: "win" });
+    }
+    if (prevScore === -1) {
+      setComment({ comment: "GET CRUSHED!!!!!!", style: "loss" });
+    }
+    if (prevScore === 0) {
+      setComment({ comment: "don't waste my time, fool", style: "draw" });
+    }
+  }, [prevScore, playerMove]);
+
   return (
     <div className={styles.container}>
       {playerMove && computerMove ? (
-        <p>
-          you picked {playerMove}, i picked {""}
-          {computerMove} - {comment}
-        </p>
+        <div className={styles.sentence}>
+          <p className={styles.first}>you picked {playerMove}...</p>
+          <p className={styles.second}>i picked {computerMove}...</p>
+          <p className={`${styles[comment.style]} ${styles.comment}`}>
+            {comment.comment}
+          </p>
+        </div>
       ) : (
         <p>make your move...</p>
       )}
