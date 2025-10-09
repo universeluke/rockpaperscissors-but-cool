@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getResult } from "../utils/getResult";
 import styles from "./CircleDiagram.module.scss";
+import AnimatedIcons from "./AnimatedIcons";
 
 interface Position {
   x: number;
@@ -91,6 +92,7 @@ export default function CircleDiagram({
           {moveList[i]}
         </div>
       ))}
+      {/* <AnimatedIcons /> */}
     </div>
   );
 }

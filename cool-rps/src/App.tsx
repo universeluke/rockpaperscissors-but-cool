@@ -5,6 +5,7 @@ import MovePicker from "./components/MovePicker";
 import CircleDiagram from "./components/CircleDiagram";
 import { getResult } from "./utils/getResult";
 import ScoreNotification from "./components/ScoreNotification";
+import AnimatedIcons from "./components/AnimatedIcons";
 
 function App() {
   const [moveList, setMoveList] = useState<string[]>([
@@ -46,6 +47,7 @@ function App() {
   return (
     <>
       <div className={styles.appContainer}>
+        {/* <AnimatedIcons /> */}
         <div className={styles.score}>
           <p>Score: {score}</p>
           <ScoreNotification prevScore={prevScore} score={score} />
