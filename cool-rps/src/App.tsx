@@ -20,7 +20,7 @@ function App() {
   const [computerMove, setComputerMove] = useState<string>("");
   const [prevScore, setPrevScore] = useState<number | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
-
+  const [isButtonHovered, setIsButtonHovered] = useState<boolean>(false);
   function generateComputerMove() {
     return moveList[Math.floor(Math.random() * moveList.length)];
   }
@@ -76,9 +76,32 @@ function App() {
           </text>
         </svg>
         <CircleDiagram moveList={moveList} playRound={playRound} />
-        <button className={styles.addMoves} onClick={() => setShowModal(true)}>
+        <button
+          className={styles.addMoves}
+          onMouseEnter={() => setIsButtonHovered(true)}
+          onMouseLeave={() => setIsButtonHovered(false)}
+          onClick={() => setShowModal(true)}
+        >
           +
         </button>
+        {isButtonHovered && (
+          <svg
+            className={styles.buttonTitle}
+            viewBox="0 0 100 100"
+            width="100"
+            height="100"
+          >
+            <path
+              id="smallCurve"
+              d="M20,65a10,10 0 1,1 60,0"
+              fill="none"
+              stroke="none"
+            />
+            <text width="500">
+              <textPath xlinkHref="#smallCurve">add more moves!</textPath>
+            </text>
+          </svg>
+        )}
       </div>
       {showModal && (
         <MovePicker

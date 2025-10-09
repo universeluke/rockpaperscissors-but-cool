@@ -54,12 +54,8 @@
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
   animation: drawLine 2s ease forwards;
-}
 
-.animatedBadLine {
-  opacity: 1;
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
-  animation: drawLine 2s ease forwards;
-  stroke: red;
+  &.bad {
+    stroke: red;
+  }
 }

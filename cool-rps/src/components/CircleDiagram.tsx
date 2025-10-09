@@ -41,29 +41,14 @@ export default function CircleDiagram({ moveList, playRound }) {
       style={{ width: radius * 2, height: radius * 2 }}
     >
       <svg className={styles.lines} width={radius * 2} height={radius * 2}>
-        {/* <defs>
-          <marker
-            id="arrowhead"
-            orient="auto"
-            markerWidth="10"
-            markerHeight="10"
-            refX="5"
-            refY="5"
-            markerUnits="strokeWidth"
-          >
-            <polygon points="0 2.5, 5 5, 0, 7.5" fill="green" />
-          </marker>
-        </defs> */}
         {winningMoves.map(({ from, to }, i) => {
-          //TODO find distance between 2 points
-          //shorten line at both ends so that the head shows
           const posFrom = positions[from];
           const posTo = positions[to];
           let lineClass = styles.hiddenLine;
           if (from === hovered) {
             lineClass = styles.animatedLine;
           } else if (to === hovered) {
-            lineClass = styles.animatedBadLine;
+            lineClass = `${styles.animatedLine} ${styles.bad}`;
           }
 
           return (
@@ -74,7 +59,6 @@ export default function CircleDiagram({ moveList, playRound }) {
               x2={posTo.x}
               y2={posTo.y}
               strokeWidth="2"
-              // markerEnd="url(#arrowhead)"
               className={lineClass}
             />
           );
