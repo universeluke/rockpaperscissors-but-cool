@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import styles from "./Game.module.scss";
 
-export default function Game({ playerMove, computerMove, prevScore }) {
+interface GameProps {
+  playerMove: string;
+  computerMove: string;
+  prevScore: number | null;
+}
+
+export default function Game({
+  playerMove,
+  computerMove,
+  prevScore,
+}: GameProps) {
   const [comment, setComment] = useState({ comment: "", style: "" });
   const [animation, setAnimation] = useState(0);
 

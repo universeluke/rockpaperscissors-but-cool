@@ -1,7 +1,17 @@
 import { useState } from "react";
 import styles from "./MovePicker.module.scss";
 
-export default function MovePicker({ moveList, setMoveList, setShowModal }) {
+interface MovePickerProps {
+  moveList: string[];
+  setMoveList: React.Dispatch<React.SetStateAction<string[]>>;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function MovePicker({
+  moveList,
+  setMoveList,
+  setShowModal,
+}: MovePickerProps) {
   const [step, setStep] = useState(1);
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");

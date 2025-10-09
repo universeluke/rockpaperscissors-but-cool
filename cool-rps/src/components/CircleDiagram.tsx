@@ -2,12 +2,25 @@ import { useState } from "react";
 import { getResult } from "../utils/getResult";
 import styles from "./CircleDiagram.module.scss";
 
-export default function CircleDiagram({ moveList, playRound }) {
+interface Position {
+  x: number;
+  y: number;
+}
+
+interface CircleDiagramProps {
+  moveList: string[];
+  playRound: (move: string) => void;
+}
+
+export default function CircleDiagram({
+  moveList,
+  playRound,
+}: CircleDiagramProps) {
   const [hovered, setHovered] = useState<number | null>();
   const radius = 200;
   const circle = 2 * Math.PI;
 
-  const positions = moveList.map((move: string, i: number) => {
+  const positions = moveList.map((_: string, i: number) => {
     const circleFraction = i / moveList.length;
     // angle of full circle in rads
     const angle = circleFraction * circle;
@@ -34,7 +47,7 @@ export default function CircleDiagram({ moveList, playRound }) {
       }
     }
   }
-  // console.log(winningMoves);
+  console.log(positions);
   return (
     <div
       className={styles.bigCircle}
@@ -64,7 +77,7 @@ export default function CircleDiagram({ moveList, playRound }) {
           );
         })}
       </svg>
-      {positions.map((coords, i: number) => (
+      {positions.map((coords: Position, i: number) => (
         <div
           key={i}
           className={`${styles.littleCircle} ${

@@ -1,10 +1,23 @@
 import { useState, useEffect } from "react";
 import styles from "./ScoreNotification.module.scss";
 
-export default function ScoreNotification({ prevScore, score }) {
+interface ScoreNotificationProps {
+  prevScore: number | null;
+  score: number;
+}
+
+interface Winner {
+  type: string;
+  score: string;
+}
+
+export default function ScoreNotification({
+  prevScore,
+  score,
+}: ScoreNotificationProps) {
   const [visible, setVisible] = useState(false);
 
-  let winner = {};
+  let winner: Winner = { type: "", score: "" };
   if (prevScore === 0) winner = { type: "tie", score: "0" };
   if (prevScore === 1) winner = { type: "player", score: "+1" };
   if (prevScore === -1) winner = { type: "computer", score: "-1" };
