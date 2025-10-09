@@ -44,38 +44,42 @@ function App() {
   // console.log(moveList);
 
   return (
-    <div>
-      <svg
-        className={styles.title}
-        viewBox="0 0 500 500"
-        width="600"
-        height="600"
-      >
-        <path
-          id="curve"
-          d="M50,480a220,220 0 1,1 400,0"
-          fill="none"
-          stroke="none"
+    <>
+      <div className={styles.appContainer}>
+        <div className={styles.score}>
+          <p>Score: {score}</p>
+          <ScoreNotification prevScore={prevScore} score={score} />
+        </div>
+        <Game
+          playerMove={playerMove}
+          computerMove={computerMove}
+          prevScore={prevScore}
         />
-        <text width="500">
-          <textPath xlinkHref="#curve">
-            Welcome to the coolest game of {moveList.map((move) => `${move} `)}
-            you've ever seen
-          </textPath>
-        </text>
-      </svg>
-      <div className={styles.score}>
-        <p>Score: {score}</p>
-        <ScoreNotification prevScore={prevScore} score={score} />
+        <svg
+          className={styles.title}
+          viewBox="0 0 500 500"
+          width="600"
+          height="600"
+        >
+          <path
+            id="curve"
+            d="M50,370a220,220 0 1,1 400,0"
+            fill="none"
+            stroke="none"
+          />
+          <text width="500">
+            <textPath xlinkHref="#curve">
+              Welcome to the coolest game of{" "}
+              {moveList.map((move) => `${move} `)}
+              you've ever seen
+            </textPath>
+          </text>
+        </svg>
+        <CircleDiagram moveList={moveList} playRound={playRound} />
+        <button className={styles.addMoves} onClick={() => setShowModal(true)}>
+          +
+        </button>
       </div>
-      <Game
-        playerMove={playerMove}
-        computerMove={computerMove}
-        prevScore={prevScore}
-      />
-      <button className={styles.addMoves} onClick={() => setShowModal(true)}>
-        + moves
-      </button>
       {showModal && (
         <MovePicker
           setMoveList={setMoveList}
@@ -83,9 +87,7 @@ function App() {
           setShowModal={setShowModal}
         />
       )}
-      <CircleDiagram moveList={moveList} playRound={playRound} />
-      {/* <img src="./diagram.webp" /> */}
-    </div>
+    </>
   );
 }
 export default App;
