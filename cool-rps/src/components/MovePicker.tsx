@@ -38,7 +38,7 @@ export default function MovePicker({ moveList, setMoveList, setShowModal }) {
             <label>first addition:</label>
             <input value={first} onChange={(e) => setFirst(e.target.value)} />
             <button className={styles.modalButton} onClick={addFirst}>
-              ok
+              add
             </button>
           </div>
         )}
@@ -63,7 +63,7 @@ export default function MovePicker({ moveList, setMoveList, setShowModal }) {
               </select>
             </div>
             <button className={styles.modalButton} onClick={addSecond}>
-              ok
+              confirm
             </button>
           </div>
         )}
