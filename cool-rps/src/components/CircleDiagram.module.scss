@@ -39,6 +39,28 @@
   z-index: -1;
 }
 
+.clickedNode {
+  position: absolute;
+  opacity: 0;
+  border: 2px solid rgb(120, 175, 109);
+  border-radius: 50%;
+  background: transparent;
+  animation: growFade 1s ease;
+  height: 70px;
+  width: 70px;
+}
+
+@keyframes growFade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
 .activeNode {
   transform: translate(-50%, -50%) scale(1.2);
   background: rgb(143, 204, 131);

@@ -18,6 +18,7 @@ export default function CircleDiagram({
   playRound,
 }: CircleDiagramProps) {
   const [hovered, setHovered] = useState<number | null>();
+  const [clicked, setClicked] = useState<number | null>();
   const radius = 200;
   const circle = 2 * Math.PI;
 
@@ -93,13 +94,16 @@ export default function CircleDiagram({
           onMouseDown={(e) => {
             e.preventDefault();
             playRound(moveList[i]);
+            setClicked(i);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               playRound(moveList[i]);
+              setClicked(i);
             }
           }}
         >
+          {clicked === i ? <div className={styles.clickedNode}></div> : null}
           {moveList[i]}
           {hovered === i ? <AnimatedIcons move={moveList[i]} /> : null}
         </button>
