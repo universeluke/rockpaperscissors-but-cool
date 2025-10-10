@@ -47,8 +47,8 @@ function App() {
     <div className={styles.font}>
       <div className={styles.appContainer}>
         <div className={styles.score}>
-          <p>Score: {score}</p>
           <ScoreNotification prevScore={prevScore} score={score} />
+          <p>Score: {score}</p>
         </div>
         <Game
           playerMove={playerMove}
