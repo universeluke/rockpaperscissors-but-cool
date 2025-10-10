@@ -1,15 +1,21 @@
 img {
   z-index: -2;
+  position: fixed;
 }
 
-.icon {
-  position: fixed;
+.iconOne {
   height: 30px;
   width: 30px;
-  animation: fall 1s linear forwards;
+  animation: fallOne 1s linear forwards;
 }
 
-@keyframes fall {
+.iconTwo {
+  height: 25px;
+  width: 25px;
+  animation: fallTwo 1s linear forwards;
+}
+
+@keyframes fallOne {
   0% {
     transform: translateY(0px);
   }
@@ -31,6 +37,32 @@ img {
   }
   100% {
     transform: translateY(200px) translateX(68px);
+    opacity: 0;
+  }
+}
+
+@keyframes fallTwo {
+  0% {
+    transform: translateY(0px);
+  }
+  10% {
+    transform: translateY(-20px) translateX(-25px);
+  }
+  15% {
+    transform: translateY(-30px) translateX(-35px);
+  }
+  30% {
+    transform: translateY(-40px) translateX(-50px);
+  }
+  60% {
+    transform: translateY(10px) translateX(-65px);
+  }
+  70% {
+    transform: translateY(70px) translateX(-75px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150px) translateX(-90px);
     opacity: 0;
   }
 }

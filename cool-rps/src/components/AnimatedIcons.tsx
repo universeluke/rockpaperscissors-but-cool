@@ -5,8 +5,25 @@ interface AnimatedIconsProps {
 }
 
 export default function AnimatedIcons({ move }: AnimatedIconsProps) {
-  if (move === "rock") return <img className={styles.icon} src="/rock.svg" />;
+  if (move === "rock")
+    return (
+      <>
+        <img className={styles.iconOne} src="/rock.svg" />
+        <img className={styles.iconTwo} src="/rock.svg" />
+      </>
+    );
   if (move === "scissors")
-    return <img className={styles.icon} src="/scissors.svg" />;
-  if (move === "paper") return <img className={styles.icon} src="/paper.svg" />;
+    return (
+      <>
+        <img className={styles.iconOne} src="/scissors.svg" />
+        <img className={styles.iconTwo} src="/scissors.svg" />
+      </>
+    );
+  if (move === "paper")
+    return (
+      <>
+        <img className={styles.iconOne} src="/paper.png" />
+        <img className={styles.iconTwo} src="/paper.png" />
+      </>
+    );
 }
