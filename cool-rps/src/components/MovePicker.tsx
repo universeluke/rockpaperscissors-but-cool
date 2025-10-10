@@ -34,6 +34,16 @@ export default function MovePicker({
     setMoveList(newList);
     setShowModal(false);
   };
+
+  const handleEsc = (e) => {
+    console.log(e, "e");
+    if (e.key === "Escape") {
+      return setShowModal(false);
+    }
+  };
+
+  window.addEventListener("keydown", handleEsc);
+
   return (
     <FocusLock>
       <div className={styles.modalOverlay}>
