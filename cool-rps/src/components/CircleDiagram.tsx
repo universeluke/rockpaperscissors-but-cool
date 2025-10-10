@@ -49,6 +49,7 @@ export default function CircleDiagram({
     }
   }
   console.log(positions);
+
   return (
     <div
       className={styles.bigCircle}
@@ -92,6 +93,11 @@ export default function CircleDiagram({
           onMouseDown={(e) => {
             e.preventDefault();
             playRound(moveList[i]);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              playRound(moveList[i]);
+            }
           }}
         >
           {moveList[i]}
