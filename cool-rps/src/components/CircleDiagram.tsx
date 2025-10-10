@@ -89,7 +89,10 @@ export default function CircleDiagram({
           onFocus={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
           onBlur={() => setHovered(null)}
-          onClick={() => playRound(moveList[i])}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            playRound(moveList[i]);
+          }}
         >
           {moveList[i]}
           {hovered === i ? <AnimatedIcons move={moveList[i]} /> : null}
