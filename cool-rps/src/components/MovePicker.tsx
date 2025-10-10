@@ -35,7 +35,7 @@ export default function MovePicker({
     setShowModal(false);
   };
 
-  const handleEsc = (e) => {
+  const handleEsc = (e: KeyboardEvent) => {
     console.log(e, "e");
     if (e.key === "Escape") {
       return setShowModal(false);
