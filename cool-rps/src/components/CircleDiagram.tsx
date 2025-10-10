@@ -94,12 +94,16 @@ export default function CircleDiagram({
           onMouseDown={(e) => {
             e.preventDefault();
             playRound(moveList[i]);
-            setClicked(i);
+            //reset state each time
+            setClicked(null);
+            requestAnimationFrame(() => setClicked(i));
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               playRound(moveList[i]);
-              setClicked(i);
+              //reset state each time
+              setClicked(null);
+              requestAnimationFrame(() => setClicked(i));
             }
           }}
         >
