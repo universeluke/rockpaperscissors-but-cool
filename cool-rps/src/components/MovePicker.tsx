@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./MovePicker.module.scss";
+import FocusLock from "react-focus-lock";
 
 interface MovePickerProps {
   moveList: string[];
@@ -34,50 +35,59 @@ export default function MovePicker({
     setShowModal(false);
   };
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalBox}>
-        <button
-          className={styles.closeButton}
-          onClick={() => setShowModal(false)}
-        >
-          X
-        </button>
+    <FocusLock>
+      <div className={styles.modalOverlay}>
+        <div className={styles.modalBox}>
+          <button
+            className={styles.closeButton}
+            onClick={() => setShowModal(false)}
+          >
+            X
+          </button>
 
-        {step === 1 && (
-          <div className={styles.field}>
-            <label>first addition:</label>
-            <input value={first} onChange={(e) => setFirst(e.target.value)} />
-            <button className={styles.modalButton} onClick={addFirst}>
-              add
-            </button>
-          </div>
-        )}
-        {step === 2 && (
-          <div className={styles.fieldGroup}>
+          {step === 1 && (
             <div className={styles.field}>
-              <label>second addition:</label>
+              <label>first addition:</label>
               <input
-                value={second}
-                onChange={(e) => setSecond(e.target.value)}
+                autoFocus
+                value={first}
+                onChange={(e) => setFirst(e.target.value)}
               />
+              <button className={styles.modalButton} onClick={addFirst}>
+                add
+              </button>
             </div>
-            <div className={styles.field}>
-              <label>beats:</label>
-              <select value={beats} onChange={(e) => setBeats(e.target.value)}>
-                <option value="">choose wisely</option>
-                {moveList.map((move, i) => (
-                  <option key={i} value={move}>
-                    {move}
-                  </option>
-                ))}
-              </select>
+          )}
+          {step === 2 && (
+            <div className={styles.fieldGroup}>
+              <div className={styles.field}>
+                <label>second addition:</label>
+                <input
+                  value={second}
+                  onChange={(e) => setSecond(e.target.value)}
+                />
+              </div>
+              <div className={styles.field}>
+                <label>beats:</label>
+                <select
+                  value={beats}
+                  onChange={(e) => setBeats(e.target.value)}
+                >
+                  <option value="">choose wisely</option>
+                  {moveList.map((move, i) => (
+                    <option key={i} value={move}>
+                      {move}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button className={styles.modalButton} onClick={addSecond}>
+                confirm
+              </button>
             </div>
-            <button className={styles.modalButton} onClick={addSecond}>
-              confirm
-            </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </FocusLock>
   );
 }
