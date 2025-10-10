@@ -9,22 +9,24 @@
 }
 .loss {
   color: red;
-  animation: fadeInThird 3s, shake 0.07s infinite;
+  animation: shake 0.07s ease;
+  animation-iteration-count: 50;
 }
 .win {
   padding-top: 12px;
   font-size: 10px;
-  animation: fadeInThird 3s;
 }
-.draw {
-  animation: fadeInThird 3s;
-}
+
 .first {
   animation: fadeInFirst 3s;
 }
 
 .second {
   animation: fadeInSecond 3s;
+}
+
+.third {
+  animation: fadeInThird 3s;
 }
 
 @keyframes shake {

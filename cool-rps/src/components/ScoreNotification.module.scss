@@ -1,8 +1,9 @@
 .notificationContainer {
   position: absolute;
-  padding: 10px 70px;
+  padding: 10px 90px;
   animation: fadeOut 1s forwards;
   opacity: 1;
+  font-family: "LEMONMILK";
 }
 
 @keyframes fadeOut {

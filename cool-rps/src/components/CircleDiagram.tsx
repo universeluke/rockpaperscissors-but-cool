@@ -79,20 +79,22 @@ export default function CircleDiagram({
         })}
       </svg>
       {positions.map((coords: Position, i: number) => (
-        <div
+        <button
           key={i}
           className={`${styles.littleCircle} ${
             hovered === i ? styles.activeNode : ""
           }`}
           style={{ left: `${coords.x}px`, top: `${coords.y}px` }}
           onMouseEnter={() => setHovered(i)}
+          onFocus={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
+          onBlur={() => setHovered(null)}
           onClick={() => playRound(moveList[i])}
         >
           {moveList[i]}
-        </div>
+          {hovered === i ? <AnimatedIcons move={moveList[i]} /> : null}
+        </button>
       ))}
-      {/* <AnimatedIcons /> */}
     </div>
   );
 }

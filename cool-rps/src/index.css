@@ -1,3 +1,16 @@
 body {
+  font-family: MyFont;
   background-color: rgb(250, 247, 243);
+}
+
+@font-face {
+  font-family: "LEMONMILK";
+  src: local("LEMONMILK"),
+    url("./fonts/LEMONMILK-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "LEMONMILKMEDIUM";
+  src: local("LEMONMILKMEDIUM"),
+    url("./fonts/LEMONMILK-Medium.otf") format("opentype");
 }

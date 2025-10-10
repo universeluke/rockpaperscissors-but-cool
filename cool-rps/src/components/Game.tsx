@@ -34,9 +34,9 @@ export default function Game({
         <div key={animation} className={styles.sentence}>
           <p className={styles.first}>you picked {playerMove}...</p>
           <p className={styles.second}>i picked {computerMove}...</p>
-          <p className={`${styles[comment.style]} ${styles.comment}`}>
-            {comment.comment}
-          </p>
+          <div className={styles.third}>
+            <p className={styles[comment.style]}>{comment.comment}</p>
+          </div>
         </div>
       ) : (
         <p>make your move...</p>

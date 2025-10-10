@@ -15,7 +15,6 @@
 .modalBox {
   background: white;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-
   border-radius: 50%;
   height: 60vh;
   width: 60vh;
@@ -34,6 +33,7 @@
     border: 1px solid black;
     border-radius: 6px;
     width: 100%;
+    font-family: "LEMONMILK";
 
     &:focus {
       outline: none;
@@ -41,6 +41,7 @@
     }
   }
   .modalButton {
+    font-family: "LEMONMILK";
     background: rgb(120, 175, 109);
     color: white;
     min-width: 40px;
@@ -54,6 +55,7 @@
     }
   }
   .closeButton {
+    font-family: "LEMONMILK";
     position: fixed;
     bottom: 100px;
     height: 30px;

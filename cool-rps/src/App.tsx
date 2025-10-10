@@ -5,7 +5,6 @@ import MovePicker from "./components/MovePicker";
 import CircleDiagram from "./components/CircleDiagram";
 import { getResult } from "./utils/getResult";
 import ScoreNotification from "./components/ScoreNotification";
-import AnimatedIcons from "./components/AnimatedIcons";
 
 function App() {
   const [moveList, setMoveList] = useState<string[]>([
@@ -45,9 +44,8 @@ function App() {
   // console.log(moveList);
 
   return (
-    <>
+    <div className={styles.font}>
       <div className={styles.appContainer}>
-        {/* <AnimatedIcons /> */}
         <div className={styles.score}>
           <p>Score: {score}</p>
           <ScoreNotification prevScore={prevScore} score={score} />
@@ -65,7 +63,7 @@ function App() {
         >
           <path
             id="curve"
-            d="M50,370a220,220 0 1,1 400,0"
+            d="M50,362a220,220 0 1,1 400,0"
             fill="none"
             stroke="none"
           />
@@ -81,6 +79,8 @@ function App() {
         <button
           className={styles.addMoves}
           onMouseEnter={() => setIsButtonHovered(true)}
+          onFocus={() => setIsButtonHovered(true)}
+          onBlur={() => setIsButtonHovered(false)}
           onMouseLeave={() => setIsButtonHovered(false)}
           onClick={() => setShowModal(true)}
         >
@@ -89,13 +89,13 @@ function App() {
         {isButtonHovered && (
           <svg
             className={styles.buttonTitle}
-            viewBox="0 0 100 100"
-            width="100"
-            height="100"
+            viewBox="0 0 120 120"
+            width="120"
+            height="120"
           >
             <path
               id="smallCurve"
-              d="M20,65a10,10 0 1,1 60,0"
+              d="M16,90a10,10 0 1,1 88,0"
               fill="none"
               stroke="none"
             />
@@ -112,7 +112,7 @@ function App() {
           setShowModal={setShowModal}
         />
       )}
-    </>
+    </div>
   );
 }
 export default App;
