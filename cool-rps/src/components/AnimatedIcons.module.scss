@@ -6,15 +6,19 @@ img {
 .iconOne {
   height: 30px;
   width: 30px;
-  animation: fallOne 1s linear forwards;
+  animation: fallOne 0.8s linear forwards;
 }
 
 .iconTwo {
   height: 25px;
   width: 25px;
-  animation: fallTwo 1s linear forwards;
+  animation: fallTwo 0.9s linear forwards;
 }
-
+.iconThree {
+  height: 25px;
+  width: 25px;
+  animation: fallThree 0.8s linear forwards;
+}
 @keyframes fallOne {
   0% {
     transform: translateY(0px);
@@ -26,17 +30,17 @@ img {
     transform: translateY(-30px) translateX(40px);
   }
   60% {
-    transform: translateX(55px);
+    transform: translateX(55px) rotate(40deg);
   }
   70% {
-    transform: translateY(35px) translateX(60px);
+    transform: translateY(35px) translateX(60px) rotate(60deg);
   }
   80% {
-    transform: translateY(70px) translateX(65px);
+    transform: translateY(50px) translateX(65px) rotate(90deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(200px) translateX(68px);
+    transform: translateY(130px) translateX(68px) rotate(120deg);
     opacity: 0;
   }
 }
@@ -55,14 +59,40 @@ img {
     transform: translateY(-40px) translateX(-50px);
   }
   60% {
-    transform: translateY(10px) translateX(-65px);
+    transform: translateY(10px) translateX(-65px) rotate(-50deg);
   }
   70% {
-    transform: translateY(70px) translateX(-75px);
+    transform: translateY(40px) translateX(-75px) rotate(-90deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(150px) translateX(-90px);
+    transform: translateY(120px) translateX(-90px) rotate(-120deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fallThree {
+  0% {
+    transform: translateY(0px);
+  }
+  10% {
+    transform: translateY(-40px) translateX(-5px);
+  }
+  15% {
+    transform: translateY(-50px) translateX(-15px);
+  }
+  30% {
+    transform: translateY(-35px) translateX(-30px);
+  }
+  60% {
+    transform: translateY(10px) translateX(-60px) rotate(50deg);
+  }
+  70% {
+    transform: translateY(40px) translateX(-75px) rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120px) translateX(-90px) rotate(120deg);
     opacity: 0;
   }
 }

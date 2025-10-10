@@ -10,6 +10,7 @@ export default function AnimatedIcons({ move }: AnimatedIconsProps) {
       <>
         <img className={styles.iconOne} src="/rock.svg" />
         <img className={styles.iconTwo} src="/rock.svg" />
+        <img className={styles.iconThree} src="/rock.svg" />
       </>
     );
   if (move === "scissors")
@@ -17,6 +18,7 @@ export default function AnimatedIcons({ move }: AnimatedIconsProps) {
       <>
         <img className={styles.iconOne} src="/scissors.svg" />
         <img className={styles.iconTwo} src="/scissors.svg" />
+        <img className={styles.iconThree} src="/scissors.svg" />
       </>
     );
   if (move === "paper")
@@ -24,6 +26,7 @@ export default function AnimatedIcons({ move }: AnimatedIconsProps) {
       <>
         <img className={styles.iconOne} src="/paper.png" />
         <img className={styles.iconTwo} src="/paper.png" />
+        <img className={styles.iconThree} src="/paper.png" />
       </>
     );
 }
