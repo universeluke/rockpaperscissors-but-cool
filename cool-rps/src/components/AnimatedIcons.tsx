@@ -29,4 +29,13 @@ export default function AnimatedIcons({ move }: AnimatedIconsProps) {
         <img className={styles.iconThree} src="/paper.png" />
       </>
     );
+  else {
+    return (
+      <div className={styles.notRPS}>
+        <p className={styles.iconOne}>{move}</p>
+        <p className={styles.iconTwo}>{move}</p>
+        <p className={styles.iconThree}>{move}</p>
+      </div>
+    );
+  }
 }

@@ -3,6 +3,12 @@ img {
   position: fixed;
 }
 
+.notRPS {
+  position: fixed;
+  z-index: -2;
+  font-size: 12px;
+}
+
 .iconOne {
   height: 30px;
   width: 30px;
