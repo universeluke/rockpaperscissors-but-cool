@@ -25,9 +25,10 @@ export default function ScoreNotification({
   useEffect(() => {
     if (prevScore === null || prevScore === undefined) return;
 
-    setVisible(true);
+    setVisible(false);
     // match css
-    const timer = setTimeout(() => setVisible(false), 600);
+    //such a janky horrible fix, just to reset the state each time
+    const timer = setTimeout(() => setVisible(true), 10);
     return () => clearTimeout(timer);
   }, [prevScore, score]);
 
