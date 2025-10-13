@@ -7,6 +7,7 @@ export default function BossFight() {
   const [playerHealth, setPlayerHealth] = useState(200);
   const [playerMove, setPlayerMove] = useState<string | null>(null);
   const [loser, setLoser] = useState<string>("");
+  const [notifKey, setNotifKey] = useState(0);
 
   const moveList = ["rock", "paper", "scissors"];
 
@@ -34,38 +35,34 @@ export default function BossFight() {
 
   function playRound(move: string) {
     const compMove = generateComputerMove();
-    console.log(compMove, "compMove");
     setPlayerMove(move);
+    setNotifKey((prev) => prev + 1);
     const result = getResult(move, compMove, moveList);
-    console.log(result);
     if (result === 1) {
       setHealthbarWidth((prev) => prev - 50);
+      setLoser("computer");
     } else if (result === -1) {
       setPlayerHealth((prev) => prev - 50);
+      setLoser("player");
+    } else {
+      setLoser("tie");
     }
+    setTimeout(() => setLoser(""), 800);
   }
-
-  useEffect(() => {
-    setLoser("computer");
-    setTimeout(() => {
-      setLoser("");
-    }, 1200);
-  }, [healthbarWidth]);
-
-  useEffect(() => {
-    console.log("player loses");
-    setLoser("player");
-    setTimeout(() => {
-      setLoser("");
-    }, 1200);
-  }, [playerHealth]);
 
   return (
     <div className={styles.container}>
+      {loser === "tie" && (
+        <div key={`tie-${notifKey}`} className={styles.tieNotif}>
+          Draw!
+        </div>
+      )}
       <div className={styles.playerHealth} style={playerHealthStyle}>
         {playerHealth}
         {loser === "player" && (
-          <div className={styles.playerHealthNotif}>-50!</div>
+          <div key={`player-${notifKey}`} className={styles.playerHealthNotif}>
+            -50!
+          </div>
         )}
       </div>
       <div className={styles.movesContainer}>
@@ -89,7 +86,12 @@ export default function BossFight() {
         <div className={styles.healthbar} style={healthbarStyle}>
           {healthbarWidth}
           {loser === "computer" && (
-            <div className={styles.computerHealthNotif}>-50!</div>
+            <div
+              key={`computer-${notifKey}`}
+              className={styles.computerHealthNotif}
+            >
+              -50!
+            </div>
           )}
         </div>
         <img className={styles.boss} src="boss-pixel.png"></img>
