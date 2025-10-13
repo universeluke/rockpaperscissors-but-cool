@@ -49,7 +49,7 @@ export default function CircleDiagram({
       }
     }
   }
-  console.log(positions);
+  // console.log(positions);
 
   return (
     <div

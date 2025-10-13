@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import Game from "./components/Game";
 import MovePicker from "./components/MovePicker";
 import CircleDiagram from "./components/CircleDiagram";
 import { getResult } from "./utils/getResult";
 import ScoreNotification from "./components/ScoreNotification";
+import BossFight from "./components/BossFight";
 
 function App() {
   const [moveList, setMoveList] = useState<string[]>([
@@ -21,6 +22,7 @@ function App() {
   const [prevScore, setPrevScore] = useState<number | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isButtonHovered, setIsButtonHovered] = useState<boolean>(false);
+  const [lastThreeTurns, setLastThreeTurns] = useState<string[]>([]);
   function generateComputerMove() {
     return moveList[Math.floor(Math.random() * moveList.length)];
   }
@@ -42,10 +44,31 @@ function App() {
   }
 
   // console.log(moveList);
+  useEffect(() => {
+    if (lastThreeTurns.length === 3) {
+      const oldTurns = [...lastThreeTurns];
+      oldTurns.shift();
+      oldTurns.push(playerMove);
+      setLastThreeTurns(oldTurns);
+    } else {
+      const oldTurns = [...lastThreeTurns];
+      oldTurns.push(playerMove);
+      setLastThreeTurns(oldTurns);
+    }
+    console.log(lastThreeTurns);
+  }, [playerMove]);
+
+  const shouldSpawnBoss =
+    lastThreeTurns[0] === "rock" &&
+    lastThreeTurns[1] === "paper" &&
+    lastThreeTurns[2] === "scissors";
+
+  console.log(shouldSpawnBoss);
 
   return (
     <div className={styles.font}>
       <div className={styles.appContainer}>
+        {shouldSpawnBoss && <BossFight />}
         <div className={styles.score}>
           <ScoreNotification prevScore={prevScore} score={score} />
           <p>Score: {score}</p>

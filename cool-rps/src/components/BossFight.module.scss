@@ -1,0 +1,93 @@
+.boss {
+  position: absolute;
+  top: 25vh;
+  left: 60vw;
+  width: 230px;
+  height: 400px;
+  animation: fadeInDelay 1.45s, float 2s infinite ease-in-out;
+}
+
+.container {
+  position: absolute;
+  background-color: rgba(37, 0, 0, 0.803);
+  backdrop-filter: blur(20px);
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  animation: fadeIn 1s;
+}
+
+.movesContainer {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  top: 37vh;
+  left: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  position: relative;
+  height: 200px;
+  width: 130px;
+}
+
+.rock {
+  animation: throb 1.5s infinite ease-in-out, fadeInDelay 2.5s;
+}
+
+.paper {
+  animation: throb 1.5s infinite ease-in-out, fadeInDelay 2.8s;
+}
+
+.scissors {
+  animation: throb 1.5s infinite ease-in-out, fadeInDelay 3.1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDelay {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes throb {
+  0% {
+    transform: scale(100%) rotate(30deg);
+  }
+  50% {
+    transform: scale(110%) rotate(30deg);
+  }
+  100% {
+    transform: scale(100%) rotate(30deg);
+  }
+}
