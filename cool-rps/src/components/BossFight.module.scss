@@ -34,6 +34,17 @@
   margin-bottom: 20px;
 }
 
+.playerHealth {
+  animation: fadeInDelay 1.45s;
+  position: absolute;
+  top: 10px;
+  color: white;
+  overflow: clip;
+  background-color: rgb(48, 164, 22);
+  height: 20px;
+  margin-bottom: 20px;
+}
+
 .movesContainer {
   position: relative;
   height: 200px;
@@ -46,18 +57,19 @@
 
 .icon {
   position: relative;
-  padding: 20px;
+  padding: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 150px;
   width: 150px;
-  opacity: 1;
+  border-radius: 50%;
   &:hover {
-    opacity: 1;
-    animation: throbLarge 1.5s infinite ease-in-out;
+    outline: 3px solid white;
+    outline-offset: -10px;
   }
 }
 
 .rock {
-  opacity: 1;
   animation: throb 1.5s infinite ease-in-out, fadeInDelay 2.6s;
   cursor: pointer;
 }
