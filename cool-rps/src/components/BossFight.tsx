@@ -29,6 +29,10 @@ export default function BossFight({
   useEffect(() => {
     const audio = new Audio("/BossMusic.mp3");
     audio.volume = 0.1;
+    if (playerHealth === 0 || healthbarWidth === 0) {
+      audio.volume = 0;
+    }
+
     setTimeout(() => {
       audio.play();
     }, 1000);
@@ -65,15 +69,8 @@ export default function BossFight({
     setTimeout(() => setLoser(""), 800);
   }
 
-  const containerStyles = {
-    animation: "fadeOut 3s",
-  };
-
   return (
-    <div
-      className={styles.container}
-      style={playerHealth || healthbarWidth === 0 ? { containerStyles } : null}
-    >
+    <div className={styles.wholeContainer}>
       {loser === "tie" && (
         <div key={`tie-${notifKey}`} className={styles.tieNotif}>
           Draw!

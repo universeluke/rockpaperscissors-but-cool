@@ -65,7 +65,11 @@ function App() {
     lastThreeTurns[1] === "paper" &&
     lastThreeTurns[2] === "scissors";
 
-  console.log(shouldSpawnBoss);
+  useEffect(() => {
+    if (playerHealth === 0 || healthbarWidth === 0) {
+      setTimeout(() => setLastThreeTurns([]), 2000);
+    }
+  }, [playerHealth, healthbarWidth]);
 
   return (
     <div className={styles.font}>
