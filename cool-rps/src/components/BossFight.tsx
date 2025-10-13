@@ -6,6 +6,7 @@ export default function BossFight() {
   const [healthbarWidth, setHealthbarWidth] = useState(200);
   const [playerHealth, setPlayerHealth] = useState(200);
   const [playerMove, setPlayerMove] = useState<string | null>(null);
+  const [loser, setLoser] = useState<string>("");
 
   const moveList = ["rock", "paper", "scissors"];
 
@@ -44,10 +45,28 @@ export default function BossFight() {
     }
   }
 
+  useEffect(() => {
+    setLoser("computer");
+    setTimeout(() => {
+      setLoser("");
+    }, 1200);
+  }, [healthbarWidth]);
+
+  useEffect(() => {
+    console.log("player loses");
+    setLoser("player");
+    setTimeout(() => {
+      setLoser("");
+    }, 1200);
+  }, [playerHealth]);
+
   return (
     <div className={styles.container}>
       <div className={styles.playerHealth} style={playerHealthStyle}>
-        LIFE
+        {playerHealth}
+        {loser === "player" && (
+          <div className={styles.playerHealthNotif}>-50!</div>
+        )}
       </div>
       <div className={styles.movesContainer}>
         <img
@@ -67,7 +86,12 @@ export default function BossFight() {
         ></img>
       </div>
       <div className={styles.bossContainer}>
-        <div className={styles.healthbar} style={healthbarStyle}></div>
+        <div className={styles.healthbar} style={healthbarStyle}>
+          {healthbarWidth}
+          {loser === "computer" && (
+            <div className={styles.computerHealthNotif}>-50!</div>
+          )}
+        </div>
         <img className={styles.boss} src="boss-pixel.png"></img>
       </div>
     </div>
