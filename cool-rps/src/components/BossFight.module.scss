@@ -1,13 +1,6 @@
-.boss {
-  position: relative;
-  width: 230px;
-  height: 400px;
-  animation: fadeInDelay 1.45s, float 2s infinite ease-in-out;
-}
-
 .container {
   position: absolute;
-  background-color: rgba(37, 0, 0, 0.803);
+  background-color: rgba(0, 0, 0, 0.803);
   backdrop-filter: blur(20px);
   height: 100vh;
   width: 100vw;
@@ -17,6 +10,28 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.bossContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boss {
+  position: relative;
+  width: 230px;
+  height: 400px;
+  animation: fadeInDelay 1.45s, float 2s infinite ease-in-out;
+}
+
+.healthbar {
+  animation: fadeInDelay 1.45s, float 2s infinite ease-in-out;
+  position: relative;
+  background-color: red;
+  height: 20px;
+  margin-bottom: 20px;
 }
 
 .movesContainer {
@@ -31,20 +46,31 @@
 
 .icon {
   position: relative;
-  height: 200px;
-  width: 130px;
+  padding: 20px;
+  height: 150px;
+  width: 150px;
+  opacity: 1;
+  &:hover {
+    opacity: 1;
+    animation: throbLarge 1.5s infinite ease-in-out;
+  }
 }
 
 .rock {
+  opacity: 1;
   animation: throb 1.5s infinite ease-in-out, fadeInDelay 2.6s;
+  cursor: pointer;
 }
 
 .paper {
   animation: throb 1.5s infinite ease-in-out, fadeInDelay 2.85s;
+  cursor: pointer;
+  z-index: 2000;
 }
 
 .scissors {
   animation: throb 1.5s infinite ease-in-out, fadeInDelay 3.1s;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -82,12 +108,24 @@
 
 @keyframes throb {
   0% {
-    transform: scale(100%) rotate(30deg);
+    transform: scale(100%);
   }
   50% {
-    transform: scale(110%) rotate(30deg);
+    transform: scale(110%);
   }
   100% {
-    transform: scale(100%) rotate(30deg);
+    transform: scale(100%);
+  }
+}
+
+@keyframes throbLarge {
+  0% {
+    transform: scale(120%);
+  }
+  50% {
+    transform: scale(140%);
+  }
+  100% {
+    transform: scale(120%);
   }
 }
