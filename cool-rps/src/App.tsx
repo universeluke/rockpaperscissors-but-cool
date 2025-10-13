@@ -23,6 +23,8 @@ function App() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isButtonHovered, setIsButtonHovered] = useState<boolean>(false);
   const [lastThreeTurns, setLastThreeTurns] = useState<string[]>([]);
+  const [healthbarWidth, setHealthbarWidth] = useState<number>(200);
+  const [playerHealth, setPlayerHealth] = useState<number>(200);
   function generateComputerMove() {
     return moveList[Math.floor(Math.random() * moveList.length)];
   }
@@ -68,7 +70,14 @@ function App() {
   return (
     <div className={styles.font}>
       <div className={styles.appContainer}>
-        {shouldSpawnBoss && <BossFight />}
+        {shouldSpawnBoss && (
+          <BossFight
+            healthbarWidth={healthbarWidth}
+            setHealthbarWidth={setHealthbarWidth}
+            playerHealth={playerHealth}
+            setPlayerHealth={setPlayerHealth}
+          />
+        )}
         <div className={styles.score}>
           <ScoreNotification prevScore={prevScore} score={score} />
           <p>Score: {score}</p>

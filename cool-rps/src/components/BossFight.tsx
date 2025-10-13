@@ -2,14 +2,29 @@ import { useState, useEffect } from "react";
 import styles from "./BossFight.module.scss";
 import { getResult } from "../utils/getResult";
 
-export default function BossFight() {
-  const [healthbarWidth, setHealthbarWidth] = useState(200);
-  const [playerHealth, setPlayerHealth] = useState(200);
+interface BossFightProps {
+  healthbarWidth: number;
+  setHealthbarWidth: React.Dispatch<React.SetStateAction<number>>;
+  playerHealth: number;
+  setPlayerHealth: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function BossFight({
+  healthbarWidth,
+  setHealthbarWidth,
+  playerHealth,
+  setPlayerHealth,
+}: BossFightProps) {
   const [playerMove, setPlayerMove] = useState<string | null>(null);
   const [loser, setLoser] = useState<string>("");
   const [notifKey, setNotifKey] = useState(0);
 
   const moveList = ["rock", "paper", "scissors"];
+
+  useEffect(() => {
+    setHealthbarWidth(200);
+    setPlayerHealth(200);
+  }, []);
 
   useEffect(() => {
     const audio = new Audio("/BossMusic.mp3");
@@ -50,8 +65,15 @@ export default function BossFight() {
     setTimeout(() => setLoser(""), 800);
   }
 
+  const containerStyles = {
+    animation: "fadeOut 3s",
+  };
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={playerHealth || healthbarWidth === 0 ? { containerStyles } : null}
+    >
       {loser === "tie" && (
         <div key={`tie-${notifKey}`} className={styles.tieNotif}>
           Draw!
@@ -61,7 +83,7 @@ export default function BossFight() {
         {playerHealth}
         {loser === "player" && (
           <div key={`player-${notifKey}`} className={styles.playerHealthNotif}>
-            -50!
+            -50
           </div>
         )}
       </div>
@@ -90,7 +112,7 @@ export default function BossFight() {
               key={`computer-${notifKey}`}
               className={styles.computerHealthNotif}
             >
-              -50!
+              -50
             </div>
           )}
         </div>

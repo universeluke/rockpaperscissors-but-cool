@@ -1,5 +1,4 @@
 body {
-  font-family: MyFont;
   background-color: rgb(250, 247, 243);
 }
 
@@ -13,4 +12,9 @@ body {
   font-family: "LEMONMILKMEDIUM";
   src: local("LEMONMILKMEDIUM"),
     url("./fonts/LEMONMILK-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "pixel";
+  src: local("pixel"), url("./fonts/pixel.ttf") format("truetype");
 }

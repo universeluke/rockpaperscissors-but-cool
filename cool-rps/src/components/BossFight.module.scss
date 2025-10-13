@@ -10,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  font-family: "pixel";
 }
 
 .bossContainer {
@@ -23,6 +24,7 @@
   position: relative;
   width: 230px;
   height: 400px;
+  padding-top: 32px;
   animation: fadeInDelay 1.45s, float 2s infinite ease-in-out;
 }
 
@@ -47,17 +49,22 @@
 
 .playerHealthNotif {
   position: relative;
-  color: rgb(69, 215, 69);
+  color: rgb(255, 37, 37);
+  font-size: 30px;
+  padding-top: 20px;
 }
 
 .computerHealthNotif {
   position: relative;
   color: rgb(255, 37, 37);
+  font-size: 30px;
+  padding-top: 15px;
 }
 .tieNotif {
   position: absolute;
   top: 80px;
   color: white;
+  font-size: 30px;
 }
 
 .movesContainer {
@@ -106,6 +113,18 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
