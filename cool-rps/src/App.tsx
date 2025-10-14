@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     if (playerHealth === 0 || healthbarWidth === 0) {
-      setTimeout(() => setLastThreeTurns([]), 2000);
+      setTimeout(() => setLastThreeTurns([]), 1200);
     }
   }, [playerHealth, healthbarWidth]);
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./BossFight.module.scss";
 import { getResult } from "../utils/getResult";
 
@@ -19,12 +19,10 @@ export default function BossFight({
   const [loser, setLoser] = useState<string>("");
   const [notifKey, setNotifKey] = useState(0);
 
-  const moveList = ["rock", "paper", "scissors"];
-  const bossMusic = new Audio("/BossMusic.mp3");
+  //needs to be useRef in order to stop the current music playing
+  const bossMusicRef = useRef<HTMLAudioElement | null>(null);
 
-  if (playerHealth === 0 || healthbarWidth === 0) {
-    bossMusic.pause();
-  }
+  const moveList = ["rock", "paper", "scissors"];
 
   useEffect(() => {
     setHealthbarWidth(200);
@@ -32,12 +30,20 @@ export default function BossFight({
   }, []);
 
   useEffect(() => {
-    bossMusic.volume = 0.1;
-
+    bossMusicRef.current = new Audio("/BossMusic.mp3");
+    bossMusicRef.current.volume = 0.1;
     setTimeout(() => {
-      bossMusic.play();
+      if (bossMusicRef.current) {
+        bossMusicRef.current.play();
+      }
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    if (playerHealth === 0 || healthbarWidth === 0) {
+      bossMusicRef.current?.pause();
+    }
+  }, [playerHealth, healthbarWidth]);
 
   const healthbarStyle = {
     width: healthbarWidth,
