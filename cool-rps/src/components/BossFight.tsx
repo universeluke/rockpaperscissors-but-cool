@@ -20,6 +20,11 @@ export default function BossFight({
   const [notifKey, setNotifKey] = useState(0);
 
   const moveList = ["rock", "paper", "scissors"];
+  const bossMusic = new Audio("/BossMusic.mp3");
+
+  if (playerHealth === 0 || healthbarWidth === 0) {
+    bossMusic.pause();
+  }
 
   useEffect(() => {
     setHealthbarWidth(200);
@@ -27,14 +32,10 @@ export default function BossFight({
   }, []);
 
   useEffect(() => {
-    const audio = new Audio("/BossMusic.mp3");
-    audio.volume = 0.1;
-    if (playerHealth === 0 || healthbarWidth === 0) {
-      audio.volume = 0;
-    }
+    bossMusic.volume = 0.1;
 
     setTimeout(() => {
-      audio.play();
+      bossMusic.play();
     }, 1000);
   }, []);
 
@@ -67,6 +68,16 @@ export default function BossFight({
       setLoser("tie");
     }
     setTimeout(() => setLoser(""), 800);
+  }
+
+  if (loser === "computer") {
+    const audio = new Audio("./hit.mp3");
+    audio.volume = 0.5;
+    audio.play();
+  } else if (loser === "player") {
+    const audio = new Audio("./damage.mp3");
+    audio.volume = 0.5;
+    audio.play();
   }
 
   return (
